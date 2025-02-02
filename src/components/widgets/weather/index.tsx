@@ -67,7 +67,7 @@ const Weather = () => {
         </motion.div>
       ) : (
         !loading && (
-          <p className="h-full px-2 font-bold font-rubik text-sm">
+          <p className="h-full px-2 font-bold font-sf text-sm">
             Make sure your given location and API Key is valid
           </p>
         )

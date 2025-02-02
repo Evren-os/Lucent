@@ -46,7 +46,7 @@ const PinnedIcon = () => {
           animate={{ y: 0 }}
           exit={{ y: -20, opacity: 0 }}
           className={clsx(
-            "absolute top-2 right-2 inline-flex items-center gap-1 rounded-md border-2 border-green-600 bg-green-600/20 p-1 pr-2 font-medium font-rubik text-green-600 text-sm backdrop-blur",
+            "absolute top-2 right-2 inline-flex items-center gap-1 rounded-md border-2 border-green-600 bg-green-600/20 p-1 pr-2 font-medium font-sf text-green-600 text-sm backdrop-blur",
           )}
         >
           <Icon icon="solar:pin-bold" />
