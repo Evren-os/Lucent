@@ -8,10 +8,10 @@ const SidebarContent = () => {
       animate={{ x: 0, opacity: 1 }}
       exit={{ x: 400, opacity: 0 }}
       transition={{ ease: "easeInOut", duration: 0.5 }}
-      className="fixed top-0 right-0 z-20 h-full w-96 select-none p-1 font-sf"
+      className="fixed top-0 right-0 z-20 h-full w-96 select-none p-1 font-geist"
     >
       <div className="flex h-full w-full flex-col rounded-xl bg-card p-4 text-card-foreground">
-        <span className="pt-3 pb-8 pl-4 font-sf font-thin text-2xl">
+        <span className="pt-3 pb-8 pl-4 font-geist font-thin text-2xl">
           Settings
         </span>
         <div className="inline-flex size-full justify-between overflow-y-auto overflow-x-hidden p-4">

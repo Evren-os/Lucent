@@ -50,6 +50,9 @@
 **Requirements**
 
 - `bun`
+- [`Geist`](https://vercel.com/font) and [`Geist Mono`](https://vercel.com/font)
+> [!TIP]
+> To ensure the font displays correctly in the new tab, you need to install it on your system. If not, it may not render properly
 - `podman` or `docker` *(optional)*
 
 **Build** 

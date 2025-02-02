@@ -31,7 +31,7 @@ export default function Modal({
     <Dialog
       open={isOpen}
       as="div"
-      className="relative z-50 select-none font-sf focus:outline-none"
+      className="relative z-50 select-none font-geist focus:outline-none"
       onClose={close}
     >
       <div className="fixed inset-0 z-10 w-screen overflow-y-auto">
