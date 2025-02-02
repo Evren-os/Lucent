@@ -1,7 +1,16 @@
-const lsData = localStorage.getItem("data-theme")
+const lsData = localStorage.getItem("data-theme");
+let isLightModeEnabled = false;
 
-const isLightModeEnabled = JSON.parse(lsData).state.isLightMode
+if (lsData) {
+  try {
+    const parsedData = JSON.parse(lsData);
+    isLightModeEnabled = parsedData?.state?.isLightMode || false;
+  } catch (error) {
+    console.error("Invalid JSON in localStorage for data-theme:", error);
+  }
+}
+
 document.documentElement.setAttribute(
   "data-theme",
-  isLightModeEnabled ? "light" : "dark",
-)
+  isLightModeEnabled ? "light" : "dark"
+);
