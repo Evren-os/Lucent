@@ -9,6 +9,11 @@ export default {
         notoSerif: ["Noto Serif", "serif"],
         lora: ["Lora", "serif"],
         josefin: ["Josefin Sans", "serif"],
+
+        // local fonts
+        'sf': ['SF Pro', 'sans-serif'],
+        'geist': ['Geist', 'sans-serif'],
+        'geist-mono': ['Geist Mono', 'monospace']
       },
       colors: {
         background: "hsl(var(--background))",
