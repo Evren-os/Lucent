@@ -1,14 +1,14 @@
-import { useAppStore } from "~/store/app-store"
-import Button from "../../ui/button"
-import Input from "../../ui/input"
-import NewTabHeader from "./shared/newtab-header"
+import { useAppStore } from "~/store/app-store";
+import Button from "../../ui/button";
+import Input from "../../ui/input";
+import NewTabHeader from "./shared/newtab-header";
 
 const DockOptions = () => {
   const { addDockApp, updateDockApp, dockApps, resetDockApp, removeDockApp } =
-    useAppStore()
+    useAppStore();
 
   const inputClass =
-    "h-1 rounded-none bg-inherit px-0 text-inherit focus:outline-none"
+    "h-1 rounded-none bg-inherit px-0 text-inherit focus:outline-none";
 
   return (
     <div className="space-y-6">
@@ -69,7 +69,7 @@ const DockOptions = () => {
                   updateDockApp(index, {
                     ...app,
                     url: e.currentTarget.value,
-                  })
+                  });
                 }}
                 className={inputClass}
               />
@@ -85,7 +85,7 @@ const DockOptions = () => {
         ))}
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default DockOptions
+export default DockOptions;
