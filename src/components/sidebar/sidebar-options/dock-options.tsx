@@ -35,10 +35,7 @@ const DockOptions = () => {
       <div className="h-full space-y-5">
         {dockApps.map((app, index) => (
           <div
-            key={`app-by-${
-              // biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
-              index
-            }`}
+            key={`app-by-${index}`}
             className="inline-flex items-center gap-2 w-full"
           >
             <Button
@@ -65,12 +62,12 @@ const DockOptions = () => {
                 id={`app-url-${index}`}
                 outline="ghost"
                 value={app.url}
-                onInput={(e) => {
+                onInput={(e) =>
                   updateDockApp(index, {
                     ...app,
                     url: e.currentTarget.value,
-                  });
-                }}
+                  })
+                }
                 className={inputClass}
               />
             </div>
@@ -79,7 +76,7 @@ const DockOptions = () => {
               variant="destructive"
               size="icon"
               className="size-8"
-              onClick={() => removeDockApp(index)}
+              onClick={() => removeDockApp(app.name)}
             />
           </div>
         ))}
