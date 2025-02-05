@@ -1,3 +1,7 @@
+## About This Repository
+This project originated from [nothing-ui-newtab](https://github.com/ImRayy/nothing-ui-newtab) and has been further developed with personal customizations. It is maintained as a standalone repository.
+
+
 <div align="center">
 <img src="https://ik.imagekit.io/rayshold/projects/nothing-ui-new-tab/banner.png?updatedAt=1735063786358" alt="banner"/> 
 <hr/>
