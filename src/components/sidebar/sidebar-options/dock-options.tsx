@@ -27,7 +27,13 @@ const DockOptions = () => {
               size="icon"
               iconSize={20}
               icon="ic:round-plus"
-              onClick={() => addDockApp()}
+              onClick={() =>
+                addDockApp({
+                  name: "", // Default value, update as needed.
+                  url: "", // Default value, update as needed.
+                  icon: "ic:round-plus", // Using the plus icon as default.
+                })
+              }
             />
           </>
         }
@@ -51,7 +57,7 @@ const DockOptions = () => {
                 outline="ghost"
                 value={app.name}
                 onInput={(e) =>
-                  updateDockApp(index, {
+                  updateDockApp(index.toString(), {
                     ...app,
                     name: e.currentTarget.value,
                   })
@@ -63,7 +69,7 @@ const DockOptions = () => {
                 outline="ghost"
                 value={app.url}
                 onInput={(e) =>
-                  updateDockApp(index, {
+                  updateDockApp(index.toString(), {
                     ...app,
                     url: e.currentTarget.value,
                   })
