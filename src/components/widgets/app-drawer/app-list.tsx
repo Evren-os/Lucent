@@ -1,13 +1,13 @@
-import { motion } from "framer-motion";
-import { useAppStore } from "~/store/app-store";
-import AppItem from "./app-item";
+import { motion } from "framer-motion"
+import { useAppStore } from "~/store/app-store"
+import AppItem from "./app-item"
 
 interface AppListProps {
-  isRemoveMode: boolean;
+  isRemoveMode: boolean
 }
 
 const AppList = ({ isRemoveMode }: AppListProps) => {
-  const drawerApps = useAppStore((s) => s.drawerApps);
+  const drawerApps = useAppStore((s) => s.drawerApps)
 
   return (
     <motion.div
@@ -32,7 +32,7 @@ const AppList = ({ isRemoveMode }: AppListProps) => {
         ))}
       </motion.div>
     </motion.div>
-  );
-};
+  )
+}
 
-export default AppList;
+export default AppList

@@ -1,19 +1,17 @@
-import { Icon } from "@iconify/react/dist/iconify.js"
-import clsx from "clsx"
-import { AnimatePresence, motion } from "framer-motion"
-import { wrap } from "framer-motion"
-import { useCallback, useEffect } from "react"
-import { useState } from "react"
-import { useImageStore } from "~/store/image-store"
-import { useOptionsStore } from "~/store/options"
-import Menu from "../ui/menu"
+import { Icon } from "@iconify/react/dist/iconify.js";
+import clsx from "clsx";
+import { AnimatePresence, motion, wrap } from "framer-motion";
+import { useCallback, useEffect, useState } from "react";
+import { useImageStore } from "~/store/image-store";
+import { useOptionsStore } from "~/store/options";
+import Menu from "../ui/menu";
 
 const ImgTag = (props: {
-  src: string | undefined
-  alt: string | undefined
+  src: string | undefined;
+  alt: string | undefined;
 }) => {
   if (!props.src || !props.alt) {
-    return null
+    return null;
   }
 
   return (
@@ -26,17 +24,17 @@ const ImgTag = (props: {
       alt={props.alt}
       className="size-full rounded-lg object-cover object-top"
     />
-  )
-}
+  );
+};
 
 const PinnedIcon = () => {
-  const [hide, setHide] = useState(false)
+  const [hide, setHide] = useState(false);
   useEffect(() => {
     const timeoutId = setTimeout(() => {
-      setHide(true)
-    }, 4000)
-    return () => clearTimeout(timeoutId)
-  }, [])
+      setHide(true);
+    }, 4000);
+    return () => clearTimeout(timeoutId);
+  }, []);
 
   return (
     <AnimatePresence>
@@ -46,7 +44,7 @@ const PinnedIcon = () => {
           animate={{ y: 0 }}
           exit={{ y: -20, opacity: 0 }}
           className={clsx(
-            "absolute top-2 right-2 inline-flex items-center gap-1 rounded-md border-2 border-green-600 bg-green-600/20 p-1 pr-2 font-medium font-geist text-green-600 text-sm backdrop-blur",
+            "absolute top-2 right-2 inline-flex items-center gap-1 rounded-md border-2 border-green-600 bg-green-600/20 p-1 pr-2 font-medium font-geist text-green-600 text-sm backdrop-blur"
           )}
         >
           <Icon icon="solar:pin-bold" />
@@ -54,11 +52,11 @@ const PinnedIcon = () => {
         </motion.span>
       )}
     </AnimatePresence>
-  )
-}
+  );
+};
 
 const Gallery = () => {
-  const { loading, images } = useImageStore()
+  const { loading, images } = useImageStore();
 
   const {
     isMonochromeWidgetImg,
@@ -70,27 +68,27 @@ const Gallery = () => {
     bgImageId,
     setBgImageId,
     gallaryImageInterval,
-  } = useOptionsStore()
-  const imageIndex = wrap(0, images.length, selectedImage)
+  } = useOptionsStore();
+  const imageIndex = wrap(0, images.length, selectedImage);
 
   const next = useCallback(() => {
     if (selectedImage >= images.length - 1) {
-      setSelectedImage(0)
-    } else setSelectedImage(selectedImage + 1)
-  }, [images, selectedImage, setSelectedImage])
+      setSelectedImage(0);
+    } else setSelectedImage(selectedImage + 1);
+  }, [images, selectedImage, setSelectedImage]);
 
   useEffect(() => {
-    let intervalId: ReturnType<typeof setInterval>
+    let intervalId: ReturnType<typeof setInterval>;
 
     if (pinnedImgIndex === null && images.length > 0) {
       intervalId = setInterval(
         () => next(),
-        (gallaryImageInterval || 10) * 1000,
-      )
+        (gallaryImageInterval || 10) * 1000
+      );
     }
 
-    return () => clearInterval(intervalId)
-  }, [gallaryImageInterval, pinnedImgIndex, images, next])
+    return () => clearInterval(intervalId);
+  }, [gallaryImageInterval, pinnedImgIndex, images, next]);
 
   return (
     <div className="h-48 w-96 rounded-xl bg-card p-3">
@@ -150,7 +148,7 @@ const Gallery = () => {
         )}
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Gallery
+export default Gallery;

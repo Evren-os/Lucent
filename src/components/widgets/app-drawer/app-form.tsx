@@ -1,23 +1,23 @@
-import { Icon, disableCache, enableCache } from "@iconify/react";
-import clsx from "clsx";
-import { motion } from "framer-motion";
-import { nanoid } from "nanoid";
-import { useEffect, useState } from "react";
-import { useDebounceValue } from "usehooks-ts";
-import Button from "~/components/ui/button";
-import Input from "~/components/ui/input";
-import Modal from "~/components/ui/modal";
-import type { App } from "~/lib/variables";
-import { useAppStore } from "~/store/app-store";
-import type { Setter } from "~/types/react";
+import { Icon, disableCache, enableCache } from "@iconify/react"
+import clsx from "clsx"
+import { motion } from "framer-motion"
+import { nanoid } from "nanoid"
+import { useEffect, useState } from "react"
+import { useDebounceValue } from "usehooks-ts"
+import Button from "~/components/ui/button"
+import Input from "~/components/ui/input"
+import Modal from "~/components/ui/modal"
+import type { App } from "~/lib/variables"
+import { useAppStore } from "~/store/app-store"
+import type { Setter } from "~/types/react"
 
 const IconPreview = (props: {
-  url: string;
-  icon: string;
-  btnFunc: () => void;
+  url: string
+  icon: string
+  btnFunc: () => void
 }) => {
-  const [debouncedUrl] = useDebounceValue(props.url, 300);
-  const [debouncedIcon] = useDebounceValue(props.icon, 300);
+  const [debouncedUrl] = useDebounceValue(props.url, 300)
+  const [debouncedIcon] = useDebounceValue(props.icon, 300)
 
   return (
     <motion.span
@@ -41,30 +41,30 @@ const IconPreview = (props: {
         className="absolute right-3 bottom-3 size-6 flex-shrink-0 p-0"
       />
     </motion.span>
-  );
-};
+  )
+}
 
 interface AppFormProps {
-  isOpen: boolean;
-  setIsOpen: Setter<boolean>;
-  app?: App | null;
+  isOpen: boolean
+  setIsOpen: Setter<boolean>
+  app?: App | null
 }
 
 const AppForm = ({ isOpen, setIsOpen, app }: AppFormProps) => {
   // Store functions
-  const { addDrawerApp, updateDrawerApp } = useAppStore();
+  const { addDrawerApp, updateDrawerApp } = useAppStore()
 
   // Modal vars
-  const [modalTitle, setModalTitle] = useState("Add app");
+  const [modalTitle, setModalTitle] = useState("Add app")
 
   // Form vars
-  const [name, setName] = useState("");
-  const [url, setUrl] = useState("");
-  const [icon, setIcon] = useState("");
-  const [isIconInput, setIsIconInput] = useState(true);
+  const [name, setName] = useState("")
+  const [url, setUrl] = useState("")
+  const [icon, setIcon] = useState("")
+  const [isIconInput, setIsIconInput] = useState(true)
 
   const submitHandler = () => {
-    if (!name || !url) return;
+    if (!name || !url) return
 
     if (!app) {
       addDrawerApp({
@@ -72,47 +72,47 @@ const AppForm = ({ isOpen, setIsOpen, app }: AppFormProps) => {
         name,
         url,
         icon: !icon ? `webicon:${url}` : icon,
-      });
+      })
     } else {
-      updateDrawerApp(app.id, { id: app.id, name, url, icon: app.icon });
+      updateDrawerApp(app.id, { id: app.id, name, url, icon: app.icon })
     }
-    setIsOpen(false);
-  };
+    setIsOpen(false)
+  }
 
   useEffect(() => {
     // Do not cache iconify icons while adding/updating apps
     if (isOpen) {
-      disableCache("all");
+      disableCache("all")
     }
-    return () => enableCache("local");
-  }, [isOpen]);
+    return () => enableCache("local")
+  }, [isOpen])
 
   useEffect(() => {
-    let timeoutId: ReturnType<typeof setTimeout>;
+    let timeoutId: ReturnType<typeof setTimeout>
 
     timeoutId = setTimeout(() => {
-      setName("");
-      setUrl("");
-      setIcon("");
-      setModalTitle("Add app");
-      setIsIconInput(false);
-    }, 400);
+      setName("")
+      setUrl("")
+      setIcon("")
+      setModalTitle("Add app")
+      setIsIconInput(false)
+    }, 400)
 
     if (app) {
-      clearTimeout(timeoutId);
+      clearTimeout(timeoutId)
 
-      setName(app.name);
-      setUrl(app.url);
-      setIcon(app.icon);
-      setModalTitle("Update app");
-      setIsIconInput(true);
-      return;
+      setName(app.name)
+      setUrl(app.url)
+      setIcon(app.icon)
+      setModalTitle("Update app")
+      setIsIconInput(true)
+      return
     }
 
     return () => {
-      clearTimeout(timeoutId);
-    };
-  }, [app]);
+      clearTimeout(timeoutId)
+    }
+  }, [app])
 
   return (
     <Modal
@@ -125,7 +125,7 @@ const AppForm = ({ isOpen, setIsOpen, app }: AppFormProps) => {
       <div
         className={clsx(
           "flex gap-3",
-          isIconInput ? "items-start" : "items-center"
+          isIconInput ? "items-start" : "items-center",
         )}
       >
         {(url || icon) && (
@@ -179,7 +179,7 @@ const AppForm = ({ isOpen, setIsOpen, app }: AppFormProps) => {
         </motion.div>
       </div>
     </Modal>
-  );
-};
+  )
+}
 
-export default AppForm;
+export default AppForm

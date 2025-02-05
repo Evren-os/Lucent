@@ -1,12 +1,12 @@
-import { Icon } from "@iconify/react/dist/iconify.js";
-import { AnimatePresence, motion } from "framer-motion";
-import { useState } from "react";
-import { useAppStore } from "~/store/app-store";
-import Button from "../ui/button";
+import { Icon } from "@iconify/react/dist/iconify.js"
+import { AnimatePresence, motion } from "framer-motion"
+import { useState } from "react"
+import { useAppStore } from "~/store/app-store"
+import Button from "../ui/button"
 
 const AiTools = () => {
-  const [showTools, setShowTools] = useState(false);
-  const aiTools = useAppStore((s) => s.aiTools);
+  const [showTools, setShowTools] = useState(false)
+  const aiTools = useAppStore((s) => s.aiTools)
 
   return (
     <>
@@ -58,14 +58,14 @@ const AiTools = () => {
                     <Icon icon={icon} fontSize={20} />
                     {name}
                   </motion.a>
-                );
+                )
               })}
             </>
           )}
         </AnimatePresence>
       </div>
     </>
-  );
-};
+  )
+}
 
-export default AiTools;
+export default AiTools

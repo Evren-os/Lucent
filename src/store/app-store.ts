@@ -1,12 +1,12 @@
-import * as idb from "idb-keyval";
-import { create } from "zustand";
-import { combine, createJSONStorage, persist } from "zustand/middleware";
+import * as idb from "idb-keyval"
+import { create } from "zustand"
+import { combine, createJSONStorage, persist } from "zustand/middleware"
 import {
   type App,
   aiTools as initialAITools,
   dockApps as initialDockApps,
   drawerApps as initialDrawerApps,
-} from "../lib/variables";
+} from "../lib/variables"
 
 export const useAppStore = create(
   persist(
@@ -19,32 +19,32 @@ export const useAppStore = create(
       (set) => ({
         // Drawer Apps
         addDrawerApp: (app: App) => {
-          set((prev) => ({ drawerApps: addApp(prev.drawerApps, app) }));
+          set((prev) => ({ drawerApps: addApp(prev.drawerApps, app) }))
         },
         addToDock: (app: App) => {
-          set((prev) => ({ dockApps: [...prev.dockApps, app] }));
+          set((prev) => ({ dockApps: [...prev.dockApps, app] }))
         },
         updateDrawerApp: (id: string, app: App) => {
-          set((prev) => ({ drawerApps: updateApp(prev.drawerApps, id, app) }));
+          set((prev) => ({ drawerApps: updateApp(prev.drawerApps, id, app) }))
         },
         removeDrawerApp: (name: string) => {
           set((prev) => ({
             drawerApps: removeApp(prev.drawerApps, name),
-          }));
+          }))
         },
         resetDrawerApp: () => set({ drawerApps: initialDrawerApps }),
 
         // AI Tools
         addAITool: (app: App) => {
-          set((prev) => ({ aiTools: addApp(prev.aiTools, app) }));
+          set((prev) => ({ aiTools: addApp(prev.aiTools, app) }))
         },
         updateAITool: (id: string, app: App) => {
-          set((prev) => ({ aiTools: updateApp(prev.aiTools, id, app) }));
+          set((prev) => ({ aiTools: updateApp(prev.aiTools, id, app) }))
         },
         removeAITool: (name: string) => {
           set((prev) => ({
             aiTools: removeApp(prev.aiTools, name),
-          }));
+          }))
         },
         resetAITools: () => set({ aiTools: initialAITools }),
 
@@ -54,13 +54,13 @@ export const useAppStore = create(
         removeDockApp: (name: string) => {
           set((prev) => ({
             dockApps: removeApp(prev.dockApps, name),
-          }));
+          }))
         },
         updateDockApp: (id: string, app: App) => {
-          set((prev) => ({ dockApps: updateApp(prev.dockApps, id, app) }));
+          set((prev) => ({ dockApps: updateApp(prev.dockApps, id, app) }))
         },
         resetDockApp: () => set({ dockApps: initialDockApps }),
-      })
+      }),
     ),
     {
       // Persistent storage options
@@ -70,26 +70,26 @@ export const useAppStore = create(
         removeItem: idb.del,
       })),
       name: "app-store",
-    }
-  )
-);
+    },
+  ),
+)
 // App list actions
 function sortApps(list: App[]) {
-  return list.sort((a, b) => a.name.localeCompare(b.name));
+  return list.sort((a, b) => a.name.localeCompare(b.name))
 }
 
 function addApp(list: App[], newApp: App): App[] {
   if (!list.find(({ name }) => name === newApp.name)) {
-    return [...list, newApp];
+    return [...list, newApp]
   }
-  alert("You can't add another app with same name");
-  return list;
+  alert("You can't add another app with same name")
+  return list
 }
 
 function removeApp(list: App[], name: string) {
-  return list.filter((app) => app.name !== name);
+  return list.filter((app) => app.name !== name)
 }
 
 function updateApp(list: App[], id: string, updatedApp: App) {
-  return list.map((app) => (app.id === id ? updatedApp : app));
+  return list.map((app) => (app.id === id ? updatedApp : app))
 }

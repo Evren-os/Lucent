@@ -1,4 +1,4 @@
-import { nanoid } from "nanoid";
+import { nanoid } from "nanoid"
 
 export const monthNames = [
   "January",
@@ -13,7 +13,7 @@ export const monthNames = [
   "October",
   "November",
   "December",
-];
+]
 
 export const dayNames = [
   "Sunday",
@@ -23,15 +23,15 @@ export const dayNames = [
   "Thursday",
   "Friday",
   "Saturday",
-];
+]
 
 export type SearchProviders = {
   // Not necessary, but why not?
-  short: string;
-  name: string;
-  icon: string;
-  baseUrl: string;
-};
+  short: string
+  name: string
+  icon: string
+  baseUrl: string
+}
 
 export const searchProviders = [
   {
@@ -64,25 +64,25 @@ export const searchProviders = [
     icon: "simple-icons:youtube",
     baseUrl: "https://youtube.com/results?search_query=",
   },
-] satisfies SearchProviders[];
+] satisfies SearchProviders[]
 
 // ------------
 // Apps Section
 // ------------
 
 export type App = {
-  id: string;
-  name: string;
-  icon: string;
-  url: string;
-};
+  id: string
+  name: string
+  icon: string
+  url: string
+}
 
 export const aiTools = [
   { name: "ChatGPT", icon: "ph:open-ai-logo", url: "chatgpt.com" },
   { name: "Gemini", icon: "ri:gemini-fill", url: "gemini.google.com/app" },
   { name: "Copilot", icon: "lineicons:copilot", url: "copilot.microsoft.com" },
   { name: "Perplexity", icon: "ri:perplexity-fill", url: "perplexity.ai" },
-].map((a) => ({ ...a, id: nanoid() })) satisfies App[];
+].map((a) => ({ ...a, id: nanoid() })) satisfies App[]
 
 export const drawerApps = [
   {
@@ -125,7 +125,7 @@ export const drawerApps = [
     icon: "mdi:tailwind",
     url: "https://tailwindcss.com/docs/customizing-colors",
   },
-].map((a) => ({ ...a, id: nanoid() })) satisfies App[];
+].map((a) => ({ ...a, id: nanoid() })) satisfies App[]
 
 export const dockApps = drawerApps.filter(({ name }) =>
   [
@@ -136,5 +136,5 @@ export const dockApps = drawerApps.filter(({ name }) =>
     "Type",
     "Spotify",
     "WhatsApp",
-  ].includes(name)
-);
+  ].includes(name),
+)

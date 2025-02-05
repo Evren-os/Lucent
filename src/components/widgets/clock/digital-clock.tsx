@@ -1,15 +1,15 @@
-import { useOptionsStore } from "../../../store/options"
-import { parseDate } from "../../../utils/datetime"
+import { useOptionsStore } from "../../../store/options";
+import { parseDate } from "../../../utils/datetime";
 
 interface DigitalClockProps {
-  hours: number
-  miniutes: number
+  hours: number;
+  miniutes: number;
 }
 
 const DigitalClock = ({ miniutes, hours }: DigitalClockProps) => {
-  const is24HoursEnabled = useOptionsStore((s) => s.format24)
+  const is24HoursEnabled = useOptionsStore((s) => s.format24);
 
-  const { weekDay, day } = parseDate(new Date())
+  const { weekDay, day } = parseDate(new Date());
 
   return (
     <div className="relative flex size-56 select-none flex-col justify-end gap-3 rounded-xl font-bold font-geist-mono font-pt-serif text-card-foreground lg:justify-start">
@@ -36,11 +36,11 @@ const DigitalClock = ({ miniutes, hours }: DigitalClockProps) => {
         </span>
       </div>
     </div>
-  )
-}
+  );
+};
 
 function formatPad(arg: number) {
-  return arg.toString().padStart(2, "0")
+  return arg.toString().padStart(2, "0");
 }
 
-export default DigitalClock
+export default DigitalClock;

@@ -1,11 +1,11 @@
-import { Icon } from "@iconify/react/dist/iconify.js";
-import type React from "react";
-import Button from "~/components/ui/button";
+import { Icon } from "@iconify/react/dist/iconify.js"
+import type React from "react"
+import Button from "~/components/ui/button"
 
 interface AppCardProps {
-  icon: string;
-  children: React.ReactNode;
-  delFunc: () => void;
+  icon: string
+  children: React.ReactNode
+  delFunc: () => void
 }
 
 const AppCard = ({ icon, children, delFunc }: AppCardProps) => {
@@ -23,6 +23,6 @@ const AppCard = ({ icon, children, delFunc }: AppCardProps) => {
         onClick={delFunc}
       />
     </div>
-  );
-};
-export default AppCard;
+  )
+}
+export default AppCard

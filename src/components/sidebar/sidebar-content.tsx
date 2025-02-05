@@ -1,5 +1,5 @@
-import { motion } from "framer-motion"
-import SidebarOptions from "./sidebar-options"
+import { motion } from "framer-motion";
+import SidebarOptions from "./sidebar-options";
 
 const SidebarContent = () => {
   return (
@@ -19,7 +19,7 @@ const SidebarContent = () => {
         </div>
       </div>
     </motion.div>
-  )
-}
+  );
+};
 
-export default SidebarContent
+export default SidebarContent;

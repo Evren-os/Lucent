@@ -1,17 +1,17 @@
-import { Dialog, DialogPanel, DialogTitle } from "@headlessui/react"
-import clsx from "clsx"
-import type React from "react"
-import type { Setter } from "../../types/react"
-import Button from "./button"
+import { Dialog, DialogPanel, DialogTitle } from "@headlessui/react";
+import clsx from "clsx";
+import type React from "react";
+import type { Setter } from "../../types/react";
+import Button from "./button";
 
 interface ModalProps {
-  title?: string
-  description?: string
-  isOpen: boolean
-  setIsOpen: Setter<boolean>
-  btnFunc?: () => void
-  children?: React.ReactNode
-  btnDisabled?: boolean
+  title?: string;
+  description?: string;
+  isOpen: boolean;
+  setIsOpen: Setter<boolean>;
+  btnFunc?: () => void;
+  children?: React.ReactNode;
+  btnDisabled?: boolean;
 }
 
 export default function Modal({
@@ -24,7 +24,7 @@ export default function Modal({
   btnDisabled = false,
 }: ModalProps) {
   function close() {
-    setIsOpen(false)
+    setIsOpen(false);
   }
 
   return (
@@ -73,5 +73,5 @@ export default function Modal({
         </div>
       </div>
     </Dialog>
-  )
+  );
 }
