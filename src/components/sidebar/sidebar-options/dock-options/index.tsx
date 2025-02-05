@@ -1,15 +1,16 @@
-import { motion } from "framer-motion"
-import { nanoid } from "nanoid"
-import { useState } from "react"
-import Button from "~/components/ui/button"
-import type { App } from "~/lib/variables"
-import { useAppStore } from "~/store/app-store"
-import NewTabHeader from "../shared/newtab-header"
-import DockAppCard from "./dock-app-card"
+import { disableCache, enableCache } from "@iconify/react/dist/iconify.js";
+import { motion } from "framer-motion";
+import { nanoid } from "nanoid";
+import { useEffect, useState } from "react";
+import Button from "~/components/ui/button";
+import type { App } from "~/lib/variables";
+import { useAppStore } from "~/store/app-store";
+import NewTabHeader from "../shared/newtab-header";
+import DockAppCard from "./dock-app-card";
 
 const DockOptions = () => {
-  const [newApp, setNewApp] = useState<App | null>(null)
-  const { addDockApp, dockApps, resetDockApp } = useAppStore()
+  const [newApp, setNewApp] = useState<App | null>(null);
+  const { addDockApp, dockApps, resetDockApp } = useAppStore();
 
   const addNewApp = () => {
     setNewApp({
@@ -17,23 +18,28 @@ const DockOptions = () => {
       name: "",
       icon: "fe:bookmark",
       url: "",
-    })
-  }
+    });
+  };
 
   const saveEngineHandler = () => {
-    if (!newApp) return
+    if (!newApp) return;
 
     if (Object.values(newApp).some((v) => v === "")) {
-      alert("You must fill all the fields")
+      alert("You must fill all the fields");
     } else {
       if (!dockApps.find(({ name }) => name === newApp.name)) {
-        addDockApp(newApp)
-        setNewApp(null)
+        addDockApp(newApp);
+        setNewApp(null);
       } else {
-        alert(`App with name ${newApp.name} already exists`)
+        alert(`App with name ${newApp.name} already exists`);
       }
     }
-  }
+  };
+
+  useEffect(() => {
+    disableCache("all");
+    return () => enableCache("local");
+  }, []);
 
   return (
     <div className="space-y-6">
@@ -78,7 +84,7 @@ const DockOptions = () => {
         ))}
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default DockOptions
+export default DockOptions;
