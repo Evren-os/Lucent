@@ -29,9 +29,10 @@ const DockOptions = () => {
               icon="ic:round-plus"
               onClick={() =>
                 addDockApp({
-                  name: "", // Default value, update as needed.
-                  url: "", // Default value, update as needed.
-                  icon: "ic:round-plus", // Using the plus icon as default.
+                  id: Date.now().toString(),
+                  name: "",
+                  url: "",
+                  icon: "ic:round-plus",
                 })
               }
             />
