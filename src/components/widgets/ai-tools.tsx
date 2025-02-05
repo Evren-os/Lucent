@@ -1,12 +1,12 @@
-import { Icon } from "@iconify/react/dist/iconify.js"
-import { AnimatePresence, motion } from "framer-motion"
-import { useState } from "react"
-import { useAppStore } from "~/store/app-store"
-import Button from "../ui/button"
+import { Icon } from "@iconify/react/dist/iconify.js";
+import { AnimatePresence, motion } from "framer-motion";
+import { useState } from "react";
+import { useAppStore } from "~/store/app-store";
+import Button from "../ui/button";
 
 const AiTools = () => {
-  const [showTools, setShowTools] = useState(false)
-  const aiTools = useAppStore((s) => s.aiTools)
+  const [showTools, setShowTools] = useState(false);
+  const aiTools = useAppStore((s) => s.aiTools);
 
   return (
     <>
@@ -41,7 +41,7 @@ const AiTools = () => {
                 transition={{ duration: 0.3, ease: "linear" }}
                 className="z-10 h-8 w-1 rounded-full bg-card-foreground/60"
               />
-              {aiTools.map(({ name, icon, url }, index) => {
+              {aiTools.map(({ id, name, icon, url }, index) => {
                 return (
                   <motion.a
                     initial={{ x: -120, opacity: 0 }}
@@ -51,21 +51,21 @@ const AiTools = () => {
                       duration: index / 10 + 0.1,
                       ease: "linear",
                     }}
-                    key={name}
+                    key={`ai-tool-${id || name}`}
                     href={`https://${url}`}
                     className="relative inline-flex h-11 items-center gap-1 rounded-full bg-card px-5 transition-colors hover:bg-card-foreground/20"
                   >
                     <Icon icon={icon} fontSize={20} />
                     {name}
                   </motion.a>
-                )
+                );
               })}
             </>
           )}
         </AnimatePresence>
       </div>
     </>
-  )
-}
+  );
+};
 
-export default AiTools
+export default AiTools;

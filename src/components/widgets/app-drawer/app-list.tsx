@@ -1,13 +1,13 @@
-import { motion } from "framer-motion"
-import { useAppStore } from "~/store/app-store"
-import AppItem from "./app-item"
+import { motion } from "framer-motion";
+import { useAppStore } from "~/store/app-store";
+import AppItem from "./app-item";
 
 interface AppListProps {
-  isRemoveMode: boolean
+  isRemoveMode: boolean;
 }
 
 const AppList = ({ isRemoveMode }: AppListProps) => {
-  const drawerApps = useAppStore((s) => s.drawerApps)
+  const drawerApps = useAppStore((s) => s.drawerApps);
 
   return (
     <motion.div
@@ -23,16 +23,16 @@ const AppList = ({ isRemoveMode }: AppListProps) => {
         transition={{ ease: "linear", duration: 0.16 }}
         className="grid w-full grid-cols-4 gap-4"
       >
-        {drawerApps.map((app, index) => (
+        {drawerApps.map((app) => (
           <AppItem
             app={app}
             isRemoveMode={isRemoveMode}
-            key={`drawer-app-${index.toString().padStart(2, "0")}`}
+            key={`drawer-app-${app.id || app.name}`}
           />
         ))}
       </motion.div>
     </motion.div>
-  )
-}
+  );
+};
 
-export default AppList
+export default AppList;
